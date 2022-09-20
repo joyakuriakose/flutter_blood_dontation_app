@@ -1,7 +1,7 @@
 
+import 'package:blood_dontaion_app/get/controllers/scroll_controller.dart';
 import 'package:get/get.dart';
 
-import '../scroll_controller.dart';
 
 class ScrollOffsetBinding extends Bindings {
   @override

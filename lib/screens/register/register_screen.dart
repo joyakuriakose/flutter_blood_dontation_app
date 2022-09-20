@@ -1,8 +1,8 @@
 import 'package:blood_dontaion_app/core/colors/colors.dart';
 import 'package:blood_dontaion_app/core/colors/heigths_and_widths.dart';
-import 'package:blood_dontaion_app/get/register_form_controller.dart';
-import 'package:blood_dontaion_app/get/register_page_view_controller.dart';
-import 'package:blood_dontaion_app/get/scroll_controller.dart';
+import 'package:blood_dontaion_app/get/controllers/register_form_controller.dart';
+import 'package:blood_dontaion_app/get/controllers/register_page_view_controller.dart';
+import 'package:blood_dontaion_app/get/controllers/scroll_controller.dart';
 import 'package:blood_dontaion_app/models/donor_model.dart';
 import 'package:blood_dontaion_app/widgets/custom_appbar.dart';
 import 'package:dots_indicator/dots_indicator.dart';

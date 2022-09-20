@@ -1,8 +1,8 @@
 import 'package:blood_dontaion_app/core/colors/colors.dart';
 import 'package:blood_dontaion_app/core/colors/heigths_and_widths.dart';
 import 'package:blood_dontaion_app/core/dummy_data.dart';
-import 'package:blood_dontaion_app/get/blood_type_selection_controller.dart';
-import 'package:blood_dontaion_app/get/scroll_controller.dart';
+import 'package:blood_dontaion_app/get/controllers/blood_type_selection_controller.dart';
+import 'package:blood_dontaion_app/get/controllers/scroll_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

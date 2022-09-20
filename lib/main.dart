@@ -1,5 +1,4 @@
-import 'package:blood_dontaion_app/get/bindings/bindings.dart';
-import 'package:blood_dontaion_app/get/splash_controller.dart';
+import 'package:blood_dontaion_app/get/controllers/splash_controller.dart';
 import 'package:blood_dontaion_app/screens/home/home_screen.dart';
 import 'package:blood_dontaion_app/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,9 +23,7 @@ class MyApp extends StatelessWidget {
           name: '/home',
           page: () => const HomeScreen(),
         ),
-
       ],
-     
       theme: ThemeData(
         primarySwatch: Colors.red,
         textTheme: const TextTheme(

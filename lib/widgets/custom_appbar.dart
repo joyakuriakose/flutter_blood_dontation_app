@@ -1,9 +1,9 @@
 import 'package:blood_dontaion_app/core/colors/colors.dart';
+import 'package:blood_dontaion_app/get/controllers/scroll_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../get/scroll_controller.dart';
 
 AppBar customAppbar(
     {required String title,
