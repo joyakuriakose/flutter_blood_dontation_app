@@ -1,11 +1,14 @@
+import 'package:blood_dontaion_app/firebase_options.dart';
 import 'package:blood_dontaion_app/get/controllers/splash_controller.dart';
 import 'package:blood_dontaion_app/screens/home/home_screen.dart';
 import 'package:blood_dontaion_app/screens/splash/splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   Get.put(SplashController());
 
   runApp(const MyApp());

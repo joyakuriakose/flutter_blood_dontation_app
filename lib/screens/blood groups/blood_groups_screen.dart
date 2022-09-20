@@ -1,7 +1,6 @@
 import 'package:blood_dontaion_app/core/colors/colors.dart';
 import 'package:blood_dontaion_app/core/colors/heigths_and_widths.dart';
-import 'package:blood_dontaion_app/core/dummy_data.dart';
-import 'package:blood_dontaion_app/get/controllers/blood_type_selection_controller.dart';
+import 'package:blood_dontaion_app/get/controllers/firebase_controller.dart';
 import 'package:blood_dontaion_app/get/controllers/scroll_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,10 +10,10 @@ import '../../widgets/custom_appbar.dart';
 
 class BloodBankScreen extends StatelessWidget {
   BloodBankScreen({super.key});
-  final BloodTypeSelectionController _bloodTypeSelectionController =
-      Get.find<BloodTypeSelectionController>();
+
   final ScrollOffsetController _scrollOffsetController =
       Get.find<ScrollOffsetController>();
+  final FirebaseController _firebaseController = Get.find<FirebaseController>();
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +63,9 @@ class BloodBankScreen extends StatelessWidget {
                               child: Obx(
                                 () => GestureDetector(
                                   onTap: () {
-                                    _bloodTypeSelectionController
-                                        .selectedType.value = index;
+                                    _firebaseController.selectedType.value =
+                                        index;
+                                    _firebaseController.selectBloodType();
                                   },
                                   child: Material(
                                     elevation: 5,
@@ -75,13 +75,13 @@ class BloodBankScreen extends StatelessWidget {
                                       duration:
                                           const Duration(milliseconds: 400),
                                       alignment: Alignment.center,
-                                      width: _bloodTypeSelectionController
+                                      width: _firebaseController
                                                   .selectedType.value ==
                                               index
                                           ? 63
                                           : 55,
                                       decoration: BoxDecoration(
-                                          color: _bloodTypeSelectionController
+                                          color: _firebaseController
                                                       .selectedType.value ==
                                                   index
                                               ? kBloodColor
@@ -89,10 +89,9 @@ class BloodBankScreen extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(10)),
                                       child: Text(
-                                        _bloodTypeSelectionController
-                                            .bloodGroups[index],
+                                        _firebaseController.bloodGroups[index],
                                         style: TextStyle(
-                                            color: _bloodTypeSelectionController
+                                            color: _firebaseController
                                                         .selectedType.value ==
                                                     index
                                                 ? Colors.white
@@ -106,8 +105,7 @@ class BloodBankScreen extends StatelessWidget {
                               ),
                             );
                           },
-                          itemCount:
-                              _bloodTypeSelectionController.bloodGroups.length,
+                          itemCount: _firebaseController.bloodGroups.length,
                           scrollDirection: Axis.horizontal,
                         ),
                       ),
@@ -117,16 +115,22 @@ class BloodBankScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-                child: ListView.builder(
-              itemBuilder: (ctx, index) {
-                return DonorTileWidget(
-                  donor: donors[index],
-                );
-              },
-              controller: _scrollOffsetController.scrollController,
-              physics: const BouncingScrollPhysics(),
-              padding: const EdgeInsets.only(top: 0),
-              itemCount: donors.length,
+                child: Obx(
+              () => _firebaseController.isLoading.value
+                  ? const Center(child: CircularProgressIndicator())
+                  : _firebaseController.donors.isNotEmpty
+                      ? ListView.builder(
+                          itemBuilder: (ctx, index) {
+                            return DonorTileWidget(
+                              donor: _firebaseController.donors[index],
+                            );
+                          },
+                          controller: _scrollOffsetController.scrollController,
+                          physics: const BouncingScrollPhysics(),
+                          padding: const EdgeInsets.only(top: 0),
+                          itemCount: _firebaseController.donors.length,
+                        )
+                      : Text("Nothing here"),
             )),
           ],
         ),
@@ -204,7 +208,7 @@ class DonorTileWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          donor.name,
+                          donor.name.capitalizeFirst!,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
@@ -296,12 +300,12 @@ class DonorTileWidget extends StatelessWidget {
                       ]),
                 ),
                 kHeight10,
-                donor.proffession != "Other"
+                donor.profession != "Other"
                     ? Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            donor.proffession,
+                            donor.profession,
                             style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 19,

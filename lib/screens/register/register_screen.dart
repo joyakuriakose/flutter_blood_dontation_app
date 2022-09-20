@@ -588,7 +588,7 @@ class RegisterScreen extends StatelessWidget {
         dob: dateOfBirth,
         phone: phone,
         bloodType: selectedBloodGroup,
-        proffession: selectedProfession,
+        profession: selectedProfession,
         workingIn: livingIn);
 
     final isAdult = checkIsadult(dateOfBirth);
@@ -717,7 +717,7 @@ class RegisterScreen extends StatelessWidget {
             ReviewWidget(title: "Date of birth", value: person.dob),
             ReviewWidget(title: "Phone", value: person.phone),
             ReviewWidget(title: "Blood group", value: person.bloodType),
-            ReviewWidget(title: "Profession", value: person.proffession),
+            ReviewWidget(title: "Profession", value: person.profession),
             person.workingIn != null
                 ? ReviewWidget(title: "Working in", value: person.workingIn!)
                 : const SizedBox.shrink()

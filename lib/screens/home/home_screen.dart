@@ -1,6 +1,6 @@
 import 'package:blood_dontaion_app/core/colors/colors.dart';
 import 'package:blood_dontaion_app/core/font_style.dart';
-import 'package:blood_dontaion_app/get/bindings/bindings.dart';
+import 'package:blood_dontaion_app/get/bindings/blood_group_binding.dart';
 import 'package:blood_dontaion_app/get/bindings/register_bindings.dart';
 import 'package:blood_dontaion_app/get/bindings/scrolloffset_binding.dart';
 import 'package:blood_dontaion_app/screens/blood%20groups/blood_groups_screen.dart';
@@ -9,7 +9,6 @@ import 'package:blood_dontaion_app/screens/help/help_screen.dart';
 import 'package:blood_dontaion_app/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -153,7 +152,7 @@ class HomeScreen extends StatelessWidget {
                       icon: Icons.person_search,
                       text: 'Find Donor',
                       ontap: () {
-                        Get.bottomSheet(FindDonorScreen());
+                        Get.bottomSheet(const FindDonorScreen());
                       },
                     ),
                     HomeTileButton(

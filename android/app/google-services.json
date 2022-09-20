@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "870914273925",
+    "project_id": "haritha-club-blood-directory",
+    "storage_bucket": "haritha-club-blood-directory.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:870914273925:android:84641a3432a2cc2d5c6fec",
+        "android_client_info": {
+          "package_name": "com.example.blood_dontaion_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "870914273925-dm8ud138um6h481if9iv96lgd4ttbvcg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIrP2ar9kRUYuCxV5tpmLYBG2soOFQRrQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "870914273925-dm8ud138um6h481if9iv96lgd4ttbvcg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
